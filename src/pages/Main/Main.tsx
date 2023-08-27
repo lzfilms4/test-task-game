@@ -1,14 +1,15 @@
 import React from 'react';
-import { useAppSelector } from '../../redux/hooks/hooks';
+import {
+  Layout,
+} from 'antd';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import List from '../../components/List/List';
 
-const Main = () => {
-  const count = useAppSelector((state) => state.counter.value)
-  return (
-    <div>
-      main
-      {count}
-    </div>
-  )
-}
+const Main = () => (
+  <Layout>
+    <Sidebar />
+    <List />
+  </Layout>
+)
 
 export default Main;

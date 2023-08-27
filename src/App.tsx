@@ -1,17 +1,14 @@
 import React from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { Layout } from 'antd';
+import MenuHeader from './components/Header/MenuHeader';
+import router from './routes/routes';
 
-import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Main from './pages/Main/Main';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Main />,
-  },
-]);
 const App = () => (
-  <RouterProvider router={router} />
+  <Layout>
+    <MenuHeader />
+    <RouterProvider router={router} />
+  </Layout>
 )
 
 export default App;
