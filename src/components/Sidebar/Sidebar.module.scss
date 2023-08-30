@@ -1,0 +1,11 @@
+.Sider {
+ @media (max-width: 768px) {
+   width: 100% !important;
+   max-width: none !important;
+   display: inline-block !important;
+ }
+}
+.Select {;
+  width: calc(100% - 30px) !important;
+  margin: 15px;
+}

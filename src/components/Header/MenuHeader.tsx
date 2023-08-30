@@ -1,12 +1,11 @@
 import React from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 
 const { Header } = Layout;
 
 const MenuHeader = () => (
   <Header style={{ display: 'flex', alignItems: 'center' }}>
-    <div className="demo-logo" />
-    <Menu theme="dark" mode="horizontal">asdasd </Menu>
+    <h1 style={{ color: '#fff' }}>Avito</h1>
   </Header>
 );
 

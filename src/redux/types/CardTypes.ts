@@ -11,3 +11,9 @@ export interface CardType {
   thumbnail: string,
   title: string
 }
+
+export interface FullGameInfo extends CardType {
+  minimum_system_requirements: Record<string, string>,
+  screenshots: { id: number, image: string }[],
+  status: string
+}

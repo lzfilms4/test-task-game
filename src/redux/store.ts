@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux';
-import counter from './slices/counterSlice'
+import searchParams from './slices/searchParams/searchParamsSlice'
 import { gamesApi } from './slices/gamesApi';
 
 export const store = configureStore({
   reducer: {
-    // counter,
+    searchParams,
     [gamesApi.reducerPath]: gamesApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(gamesApi.middleware),

@@ -14,7 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
   },
   "include": [".eslintrc.cjs","src", "./jest-confug.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

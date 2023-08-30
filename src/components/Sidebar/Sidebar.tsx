@@ -1,38 +1,55 @@
 import React from 'react';
-import { Layout, Menu, MenuProps } from 'antd';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { Layout, Select } from 'antd';
+import { CategorySelectors, PlatformSelectors, SortBy } from '../helpers/SelectorsData/SelectorsData';
+import { useAppDispatch } from '../../redux/hooks/hooks';
+import { setCategory, setPlatform, setSortBy } from '../../redux/slices/searchParams/searchParamsSlice';
+
+import cls from './Sidebar.module.scss'
 
 const { Sider } = Layout;
 
-const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
-  (icon, index) => {
-    const key = String(index + 1);
-
-    return {
-      key: `sub${key}`,
-      icon: React.createElement(icon),
-      label: `subnav ${key}`,
-
-      children: new Array(4).fill(null).map((_, j) => {
-        const subKey = index * 4 + j + 1;
-        return {
-          key: subKey,
-          label: `option${subKey}`,
-        };
-      }),
-    };
-  },
-);
-const Sidebar = () => (
-  <Sider width={200}>
-    <Menu
-      mode="inline"
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['sub1']}
-      style={{ height: '100%', borderRight: 0 }}
-      items={items2}
-    />
-  </Sider>
-);
+const Sidebar = () => {
+  const dispatch = useAppDispatch()
+  const handleChangePlatform = (value: string | undefined) => {
+    dispatch(setPlatform(value))
+  };
+  const handleChangeCategory = (value: string | undefined) => {
+    dispatch(setCategory(value))
+  };
+  const handleChangeSortBy = (value: string | undefined) => {
+    dispatch(setSortBy(value))
+  };
+  return (
+    <Sider className={cls.Sider}>
+      <Select
+        placeholder="Платформа"
+        onChange={handleChangePlatform}
+        allowClear
+        options={
+            PlatformSelectors.map((el) => ({ value: el }))
+        }
+        className={cls.Select}
+      />
+      <Select
+        placeholder="Жанр"
+        onChange={handleChangeCategory}
+        allowClear
+        options={
+          CategorySelectors.map((el) => ({ value: el }))
+        }
+        className={cls.Select}
+      />
+      <Select
+        placeholder="Сортировать по"
+        onChange={handleChangeSortBy}
+        allowClear
+        options={
+            SortBy.map((el) => ({ value: el }))
+        }
+        className={cls.Select}
+      />
+    </Sider>
+  )
+}
 
 export default Sidebar;

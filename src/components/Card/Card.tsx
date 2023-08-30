@@ -1,6 +1,5 @@
 import React from 'react';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Card } from 'antd';
+import { Card } from 'antd';
 import { Link } from 'react-router-dom';
 import { CardType } from '../../redux/types/CardTypes';
 
@@ -19,16 +18,10 @@ const CardItem: React.FC<CardItemProps> = ({ item }) => (
           src={item.thumbnail}
         />
           )}
-      actions={[
-        <SettingOutlined key="setting" />,
-        <EditOutlined key="edit" />,
-        <EllipsisOutlined key="ellipsis" />,
-      ]}
     >
       <Meta
-        avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}
         title={item.title}
-        description={item.platform}
+        description={`${item.platform} /  ${item.release_date} / ${item.genre} / ${item.publisher}`}
       />
     </Card>
   </Link>

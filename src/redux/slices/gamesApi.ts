@@ -1,21 +1,27 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { CardType } from '../types/CardTypes';
+import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
+import { CardType, FullGameInfo } from '../types/CardTypes';
+import { SearchState } from './searchParams/types/types';
 
 export const gamesApi = createApi({
   reducerPath: 'gamesApi',
-  tagTypes: ['Items'],
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://free-to-play-games-database.p.rapidapi.com/api/',
-    headers: {
-      'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
-      'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
-    },
-  }),
+  tagTypes: ['Games'],
+  keepUnusedDataFor: 300, // 5 минут
+  baseQuery: retry(fetchBaseQuery({
+    baseUrl: '/api',
+  }), { maxRetries: 3 }), // 3 повторные попытки при ошибке
   endpoints: (builder) => ({
-    getGamesList: builder.query<CardType[], void>({
-      query: () => 'games',
+    getGamesList: builder.query<CardType[], SearchState>({
+      query: ({ platform, category, sortBy }) => ({
+        url: 'games',
+        params: {
+          platform,
+          category,
+          'sort-by': sortBy,
+        },
+      }),
+
     }),
-    getGame: builder.query<any, string>({
+    getGame: builder.query<FullGameInfo, string>({
       query: (id) => ({ url: 'game', params: { id } }),
     }),
   }),
