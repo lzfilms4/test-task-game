@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Pagination, Spin } from 'antd';
 import Card from '../Card/Card';
-import { useGetGamesListQuery } from '../../redux/slices/gamesApi';
+import { useGetGamesListQuery } from '../../redux/slices/gamesApi/gamesApi';
 import { useAppSelector } from '../../redux/hooks/hooks';
 import getSearchParams from '../../redux/slices/searchParams/selectors/selectors';
 

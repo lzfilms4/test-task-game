@@ -4,7 +4,7 @@ import {
   FloatButton, Carousel, Card, Spin,
 } from 'antd';
 import { LeftOutlined } from '@ant-design/icons';
-import { useGetGameQuery } from '../../redux/slices/gamesApi';
+import { useGetGameQuery } from '../../redux/slices/gamesApi/gamesApi';
 
 const { Meta } = Card;
 

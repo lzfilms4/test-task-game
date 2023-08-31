@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux';
 import searchParams from './slices/searchParams/searchParamsSlice'
-import { gamesApi } from './slices/gamesApi';
+import { gamesApi } from './slices/gamesApi/gamesApi';
 
 export const store = configureStore({
   reducer: {

@@ -24,6 +24,16 @@ module.exports = {
     "@typescript-eslint/no-unused-expressions": 0,
     "import/no-extraneous-dependencies": 0,
     "no-param-reassign": 0,
-    'no-unused-vars': 'warn',
+    "no-unused-vars": 'warn',
+    "max-len": ["warn", { "code": 130 }],
+
   },
+  overrides: [
+  {
+    files: ["*.test.ts", "*.test.tsx"],
+    rules: {
+      "react/destructuring-assignment": 0
+    }
+  }
+]
 };

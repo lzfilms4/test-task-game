@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
-import { CardType, FullGameInfo } from '../types/CardTypes';
-import { SearchState } from './searchParams/types/types';
+import { CardType, FullGameInfo } from '../../types/CardTypes';
+import { SearchState } from '../searchParams/types/types';
 
 export const gamesApi = createApi({
   reducerPath: 'gamesApi',
